@@ -31,7 +31,7 @@ def extract_words(soup):
     tds = declension_table.find_all("td")
 
     if len(tds) != 12:
-        raise ValueError("Not enough cells")
+        raise ValueError("Invalid number of cells")
 
     words = []
 
