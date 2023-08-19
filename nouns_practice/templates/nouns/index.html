@@ -4,64 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nouns practice</title>
-    <style>
-      h1 {
-        font-weight: normal;
-      }
-
-      table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-      }
-
-      td,
-      th {
-        border: 1px solid black;
-        text-align: left;
-        padding: 8px;
-      }
-    </style>
   </head>
   <body>
-    <h1>Declension for: <strong>{{ word }}</strong></h1>
+    <h1>Type in a word to practice</h1>
+    <label for="word">Word</label>
+    <input type="text" id="word">
+    <button onclick="startPractice()" type="button">Go</button>
+    <script>
 
-    <table>
-      <tr>
-        <th>Case</th>
-        <th>Singular</th>
-        <th>Plurar</th>
-      </tr>
-      <tr>
-        <td>Nominativus</td>
-        <td>{{ cases.sing.nom }}</td>
-        <td>{{ cases.plur.nom }}</td>
-      </tr>
-      <tr>
-        <td>Genitivus</td>
-        <td>{{ cases.sing.gen }}</td>
-        <td>{{ cases.plur.gen }}</td>
-      </tr>
-      <tr>
-        <td>Dativus</td>
-        <td>{{ cases.sing.dat }}</td>
-        <td>{{ cases.plur.dat }}</td>
-      </tr>
-      <tr>
-        <td>Accusativus</td>
-        <td>{{ cases.sing.acc }}</td>
-        <td>{{ cases.plur.acc }}</td>
-      </tr>
-      <tr>
-        <td>Instrumentalis</td>
-        <td>{{ cases.sing.ins }}</td>
-        <td>{{ cases.plur.ins }}</td>
-      </tr>
-      <tr>
-        <td>Prepositionalis</td>
-        <td>{{ cases.sing.pre }}</td>
-        <td>{{ cases.plur.pre }}</td>
-      </tr>
-    </table>
+      function startPractice() {
+        const word = document.getElementById("word");
+        window.location.href = `/nouns/practice/${word.value}`;
+      }
+
+    </script>
   </body>
 </html>

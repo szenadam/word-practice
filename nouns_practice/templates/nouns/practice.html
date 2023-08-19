@@ -16,7 +16,7 @@
       <button type="submit">Submit</button>
     </form>
     <p>Correct answers: {{request.session.correct_answer_num}}</p>
-    <form action="/nouns/practice/reset" method="post">
+    <form action="/nouns/practice/session/reset" method="post">
       {% csrf_token %}
       <button type="submit">Reset session</button>
     </form>

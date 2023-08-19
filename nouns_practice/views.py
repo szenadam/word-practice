@@ -7,13 +7,7 @@ from nouns_practice.utils import extract_cases, extract_words, get_soup, remove_
 # Create your views here.
 
 def index(request):
-    word = "машина"
-    soup = get_soup(word)
-    words = extract_words(soup)
-    cases = extract_cases(words)
-    print(cases)
-    context = { 'cases': cases, 'word': word}
-    return render(request, "nouns/index.html", context)
+    return render(request, "nouns/index.html", {})
 
 def practice(request, word_chosen):
     if not "correct_answer_num" in request.session:
@@ -41,4 +35,4 @@ def practice(request, word_chosen):
 
 def reset_session(request):
     request.session.flush()
-    return redirect("practice")
+    return redirect("index")
