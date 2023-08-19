@@ -8,7 +8,7 @@
   <body>
     <h1>Practice for: {{ word }}</h1>
     <h2>What is the {{chosen_case.0}} {{chosen_case.1}}?</h2>
-    <p><em>(correct answer: {{ answer }})</em></p>
+    <!-- <p><em>(correct answer: {{ answer }})</em></p> -->
     <form action="", method="post">
       {% csrf_token %}
       <label for="user_answer">Your answer:</label>
@@ -16,5 +16,9 @@
       <button type="submit">Submit</button>
     </form>
     <p>Correct answers: {{request.session.correct_answer_num}}</p>
+    <form action="/nouns/practice/reset" method="post">
+      {% csrf_token %}
+      <button type="submit">Reset session</button>
+    </form>
   </body>
 </html>

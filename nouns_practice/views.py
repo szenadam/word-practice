@@ -1,7 +1,7 @@
 import random
 from bs4 import BeautifulSoup
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.template import loader
 import requests
 
@@ -39,6 +39,10 @@ def practice(request):
         'correct_answer_num': request.session["correct_answer_num"]
     }
     return render(request, "nouns/practice.html", context)
+
+def reset_session(request):
+    request.session.flush()
+    return redirect("practice")
 
 def get_soup(chosen_word):
     URL = f"https://en.wiktionary.org/wiki/{chosen_word}"
