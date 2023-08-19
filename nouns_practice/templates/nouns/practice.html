@@ -15,7 +15,15 @@
       <input type="text" id="user_answer" name="user_answer" />
       <button type="submit">Submit</button>
     </form>
+    {% if request.session.total > 0 %}
+      {% if request.session.was_answer_correct %}
+        <p style="color: green">Correct!</p>
+      {% else %}
+        <p style="color: red">Incorrect</p>
+      {%endif%}
+    {% endif %}
     <p>Correct answers: {{request.session.correct_answer_num}}</p>
+    <p>Total: {{ request.session.total }}</p>
     <form action="/nouns/practice/session/reset" method="post">
       {% csrf_token %}
       <button type="submit">Reset session</button>

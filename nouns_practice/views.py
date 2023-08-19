@@ -10,13 +10,19 @@ def index(request):
     return render(request, "nouns/index.html", {})
 
 def practice(request, word_chosen):
+    request.session["was_answer_correct"] = False
     if not "correct_answer_num" in request.session:
         request.session["correct_answer_num"] = 0
 
+    if not "total" in request.session:
+        request.session["total"] = 0
+
     if request.method == "POST":
         user_answer = request.POST.get("user_answer")
+        request.session["total"] += 1
         if remove_accent(request.session.get("answer")) == user_answer:
             request.session["correct_answer_num"] += 1
+            request.session["was_answer_correct"] = True
 
     word = word_chosen
     soup = get_soup(word)
