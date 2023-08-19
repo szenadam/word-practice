@@ -15,7 +15,7 @@ def index(request):
     context = { 'cases': cases, 'word': word}
     return render(request, "nouns/index.html", context)
 
-def practice(request):
+def practice(request, word_chosen):
     if not "correct_answer_num" in request.session:
         request.session["correct_answer_num"] = 0
 
@@ -24,7 +24,7 @@ def practice(request):
         if remove_accent(request.session.get("answer")) == user_answer:
             request.session["correct_answer_num"] += 1
 
-    word = "машина"
+    word = word_chosen
     soup = get_soup(word)
     words = extract_words(soup)
     cases = extract_cases(words)
