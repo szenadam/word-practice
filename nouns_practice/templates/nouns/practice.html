@@ -8,10 +8,13 @@
   <body>
     <h1>Practice for: {{ word }}</h1>
     <h2>What is the {{chosen_case.0}} {{chosen_case.1}}?</h2>
-    <form action="">
+    <p><em>(correct answer: {{ answer }})</em></p>
+    <form action="", method="post">
+      {% csrf_token %}
       <label for="user_answer">Your answer:</label>
-      <input type="text" id="user_answer" />
+      <input type="text" id="user_answer" name="user_answer" />
       <button type="submit">Submit</button>
     </form>
+    <p>Correct answers: {{request.session.correct_answer_num}}</p>
   </body>
 </html>
